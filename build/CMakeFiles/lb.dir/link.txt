@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/lb.dir/src/lb.cpp.o -o lb 

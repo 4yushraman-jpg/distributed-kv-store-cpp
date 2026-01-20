@@ -12,3 +12,8 @@ add_executable(server src/main.cpp)
 # Link the Threads library to your server
 target_link_libraries(server PRIVATE Threads::Threads)
 target_compile_options(server PRIVATE -Wall -Wextra)
+
+# Add the Load Balancer executable
+add_executable(lb src/lb.cpp)
+target_link_libraries(lb PRIVATE Threads::Threads)
+target_compile_options(lb PRIVATE -Wall -Wextra)

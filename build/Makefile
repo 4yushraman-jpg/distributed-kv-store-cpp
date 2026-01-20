@@ -129,6 +129,43 @@ server/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
 .PHONY : server/fast
 
+#=============================================================================
+# Target rules for targets named lb
+
+# Build rule for target.
+lb: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lb
+.PHONY : lb
+
+# fast build rule for target.
+lb/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lb.dir/build.make CMakeFiles/lb.dir/build
+.PHONY : lb/fast
+
+src/lb.o: src/lb.cpp.o
+.PHONY : src/lb.o
+
+# target to build an object file
+src/lb.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lb.dir/build.make CMakeFiles/lb.dir/src/lb.cpp.o
+.PHONY : src/lb.cpp.o
+
+src/lb.i: src/lb.cpp.i
+.PHONY : src/lb.i
+
+# target to preprocess a source file
+src/lb.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lb.dir/build.make CMakeFiles/lb.dir/src/lb.cpp.i
+.PHONY : src/lb.cpp.i
+
+src/lb.s: src/lb.cpp.s
+.PHONY : src/lb.s
+
+# target to generate assembly for a file
+src/lb.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lb.dir/build.make CMakeFiles/lb.dir/src/lb.cpp.s
+.PHONY : src/lb.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -161,7 +198,11 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... lb"
 	@echo "... server"
+	@echo "... src/lb.o"
+	@echo "... src/lb.i"
+	@echo "... src/lb.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
