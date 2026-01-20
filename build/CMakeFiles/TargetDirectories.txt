@@ -1,0 +1,3 @@
+/home/ayush/cpp-redis-lite/build/CMakeFiles/server.dir
+/home/ayush/cpp-redis-lite/build/CMakeFiles/edit_cache.dir
+/home/ayush/cpp-redis-lite/build/CMakeFiles/rebuild_cache.dir
