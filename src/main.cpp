@@ -8,46 +8,56 @@
 #include <sstream>
 #include <vector>
 #include <thread>
-#include <fstream> 
+#include <fstream>
+#include <list> // NEW: For Doubly Linked List
 
-std::unordered_map<std::string, std::string> kv_store;
+// --- LRU CACHE DATA STRUCTURES ---
+struct CacheEntry {
+    std::string value;
+    std::list<std::string>::iterator list_iterator; // Pointer to the linked list node
+};
+
+size_t MAX_CAPACITY = 3; // Kept small for easy testing
+std::list<std::string> lru_list; // Ordered keys (Front = MRU, Back = LRU)
+std::unordered_map<std::string, CacheEntry> kv_store;
 std::mutex kv_mutex;
 
-// GLOBAL VARIABLE (Accessible by all functions)
-std::string db_file = "dump.data"; 
+std::string db_file = "dump.data";
 
 // --- PERSISTENCE LAYER ---
-
 void save_to_disk() {
     std::lock_guard<std::mutex> lock(kv_mutex);
-    std::ofstream outFile(db_file); // Uses the global variable
-    
+    std::ofstream outFile(db_file);
     if (outFile.is_open()) {
-        for (const auto& pair : kv_store) {
-            outFile << pair.first << " " << pair.second << "\n";
+        // Save in LRU order (Most recently used first)
+        for (const auto& key : lru_list) {
+            outFile << key << " " << kv_store[key].value << "\n";
         }
         outFile.close();
-        std::cout << "[Persistence] Saved to " << db_file << "\n"; // Debug Log
-    } else {
-        std::cerr << "[Error] Could not open file: " << db_file << "\n";
+        std::cout << "[Persistence] Saved to " << db_file << "\n";
     }
 }
 
 void load_from_disk() {
-    std::ifstream inFile(db_file); // Uses the global variable
+    std::ifstream inFile(db_file);
     std::string key, value;
-    
     if (inFile.is_open()) {
         while (inFile >> key >> value) {
-            kv_store[key] = value;
+            // Loading logic mimics a "SET" to rebuild LRU order
+            if (lru_list.size() >= MAX_CAPACITY) {
+                std::string lru_key = lru_list.back();
+                lru_list.pop_back();
+                kv_store.erase(lru_key);
+            }
+            lru_list.push_front(key);
+            kv_store[key] = {value, lru_list.begin()};
         }
         inFile.close();
-        std::cout << "[Persistence] Loaded " << kv_store.size() << " keys from " << db_file << "\n";
+        std::cout << "[Persistence] Loaded " << kv_store.size() << " keys.\n";
     }
 }
 
-// --- COMMAND PROCESSING ---
-
+// --- CORE LOGIC ---
 std::string process_request(std::string request) {
     std::stringstream ss(request);
     std::string command;
@@ -56,18 +66,43 @@ std::string process_request(std::string request) {
     if (command == "SET") {
         std::string key, value;
         ss >> key >> value;
-        {
-            std::lock_guard<std::mutex> lock(kv_mutex);
-            kv_store[key] = value;
+        
+        std::lock_guard<std::mutex> lock(kv_mutex);
+        
+        // 1. If Key Exists: Update value & Move to Front
+        if (kv_store.find(key) != kv_store.end()) {
+            lru_list.erase(kv_store[key].list_iterator); // O(1) removal
+            lru_list.push_front(key);
+            kv_store[key] = {value, lru_list.begin()};
+            return "OK (Updated)\n";
         }
+
+        // 2. If Key is New: Check Capacity
+        if (lru_list.size() >= MAX_CAPACITY) {
+            // EVICTION! Remove the guy at the back
+            std::string lru_key = lru_list.back();
+            lru_list.pop_back();
+            kv_store.erase(lru_key);
+            std::cout << "[LRU] Evicted key: " << lru_key << "\n"; // Debug log
+        }
+
+        // 3. Insert New Key
+        lru_list.push_front(key);
+        kv_store[key] = {value, lru_list.begin()};
         return "OK\n";
     } 
     else if (command == "GET") {
         std::string key;
         ss >> key;
+        
         std::lock_guard<std::mutex> lock(kv_mutex);
         if (kv_store.find(key) != kv_store.end()) {
-            return kv_store[key] + "\n";
+            // "Touching" a key moves it to the front (Most Recently Used)
+            lru_list.erase(kv_store[key].list_iterator);
+            lru_list.push_front(key);
+            kv_store[key].list_iterator = lru_list.begin();
+            
+            return kv_store[key].value + "\n";
         } else {
             return "(nil)\n";
         }
@@ -86,7 +121,6 @@ void handle_client(int client_socket) {
     
     if (valread > 0) {
         std::string request(buffer, valread);
-        // Trim whitespace
         if (!request.empty() && request.back() == '\n') request.pop_back();
         if (!request.empty() && request.back() == '\r') request.pop_back();
 
@@ -98,15 +132,10 @@ void handle_client(int client_socket) {
 
 int main(int argc, char* argv[]) {
     int port = 8080;
-    if (argc > 1) {
-        port = std::stoi(argv[1]);
-    }
+    if (argc > 1) port = std::stoi(argv[1]);
 
-    // UPDATE GLOBAL VARIABLE BASED ON PORT
     db_file = "dump_" + std::to_string(port) + ".data";
-
-    // Load data specific to this port
-    load_from_disk();
+    load_from_disk(); // Restore state
 
     int server_fd = socket(AF_INET, SOCK_STREAM, 0);
     int opt = 1;
@@ -121,10 +150,8 @@ int main(int argc, char* argv[]) {
         std::cerr << "Bind failed on port " << port << "\n";
         return -1;
     }
-    
     listen(server_fd, 3);
-
-    std::cout << "Redis-Lite running on port " << port << "...\n";
+    std::cout << "LRU Redis-Lite running on port " << port << " (Capacity: " << MAX_CAPACITY << ")...\n";
     
     int addrlen = sizeof(address);
     while(true) {

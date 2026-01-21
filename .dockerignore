@@ -1,0 +1,5 @@
+build/
+.git/
+.vscode/
+__pycache__/
+*.data

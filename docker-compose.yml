@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  node1:
+    build: .
+    working_dir: /app
+    command: server 8081  # No "./", just the command name
+    network_mode: "host"
+    volumes:
+      - ./data:/app       # This is now safe!
+
+  node2:
+    build: .
+    working_dir: /app
+    command: server 8082
+    network_mode: "host"
+    volumes:
+      - ./data:/app
+
+  loadbalancer:
+    build: .
+    working_dir: /app
+    command: lb           # Run the Load Balancer globally
+    network_mode: "host"
+    depends_on:
+      - node1
+      - node2

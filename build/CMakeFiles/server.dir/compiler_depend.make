@@ -12,6 +12,7 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
   /usr/include/c++/13/bits/alloc_traits.h \
+  /usr/include/c++/13/bits/allocated_ptr.h \
   /usr/include/c++/13/bits/allocator.h \
   /usr/include/c++/13/bits/basic_ios.h \
   /usr/include/c++/13/bits/basic_ios.tcc \
@@ -39,6 +40,7 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
   /usr/include/c++/13/bits/invoke.h \
   /usr/include/c++/13/bits/ios_base.h \
   /usr/include/c++/13/bits/istream.tcc \
+  /usr/include/c++/13/bits/list.tcc \
   /usr/include/c++/13/bits/locale_classes.h \
   /usr/include/c++/13/bits/locale_classes.tcc \
   /usr/include/c++/13/bits/locale_facets.h \
@@ -70,6 +72,7 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
   /usr/include/c++/13/bits/stl_iterator.h \
   /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/13/bits/stl_iterator_base_types.h \
+  /usr/include/c++/13/bits/stl_list.h \
   /usr/include/c++/13/bits/stl_pair.h \
   /usr/include/c++/13/bits/stl_uninitialized.h \
   /usr/include/c++/13/bits/stl_vector.h \
@@ -112,6 +115,7 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
   /usr/include/c++/13/iostream \
   /usr/include/c++/13/istream \
   /usr/include/c++/13/limits \
+  /usr/include/c++/13/list \
   /usr/include/c++/13/mutex \
   /usr/include/c++/13/new \
   /usr/include/c++/13/ostream \
@@ -322,8 +326,6 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 
-/usr/include/x86_64-linux-gnu/bits/time.h:
-
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
@@ -416,6 +418,18 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
 
 /usr/include/c++/13/vector:
 
+/usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h:
+
+/usr/include/c++/13/unordered_map:
+
+/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+
+/usr/include/c++/13/type_traits:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
+
+/usr/include/c++/13/tuple:
+
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
 
 /usr/include/c++/13/bits/refwrap.h:
@@ -470,19 +484,31 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
 
 /usr/include/c++/13/bits/functional_hash.h:
 
+/usr/include/c++/13/bits/nested_exception.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h:
+
+/usr/include/linux/stddef.h:
+
+/usr/include/c++/13/bits/basic_ios.tcc:
+
 /usr/include/c++/13/new:
 
 /usr/include/c++/13/ext/alloc_traits.h:
 
+/usr/include/linux/posix_types.h:
+
+/usr/include/c++/13/bits/localefwd.h:
+
+/usr/include/c++/13/bits/exception_defines.h:
+
+/usr/include/x86_64-linux-gnu/bits/socket_type.h:
+
+/usr/include/c++/13/bits/locale_facets.h:
+
 /usr/include/c++/13/bits/codecvt.h:
 
 /usr/include/c++/13/bits/stl_vector.h:
-
-/usr/include/c++/13/bits/locale_facets.tcc:
-
-/usr/include/c++/13/bits/requires_hosted.h:
-
-/usr/include/c++/13/bits/string_view.tcc:
 
 /usr/include/c++/13/backward/binders.h:
 
@@ -491,6 +517,10 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
 /usr/include/c++/13/bits/basic_string.h:
+
+/usr/include/c++/13/bits/exception_ptr.h:
+
+/usr/include/c++/13/bits/istream.tcc:
 
 /usr/include/stdc-predef.h:
 
@@ -516,17 +546,15 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
 
 /usr/include/c++/13/cwchar:
 
-/usr/include/c++/13/bits/nested_exception.h:
+/usr/include/alloca.h:
 
-/usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h:
+/usr/include/c++/13/bit:
 
-/usr/include/linux/stddef.h:
+/usr/include/c++/13/bits/basic_string.tcc:
 
-/usr/include/c++/13/bits/basic_ios.tcc:
+/usr/include/c++/13/bits/enable_special_members.h:
 
-/usr/include/c++/13/bits/istream.tcc:
-
-/usr/include/c++/13/bits/exception_ptr.h:
+/home/ayush/cpp-redis-lite/src/main.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
@@ -548,19 +576,29 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
 
 /usr/include/c++/13/bits/exception.h:
 
-/usr/include/alloca.h:
+/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
-/usr/include/c++/13/bits/basic_string.tcc:
+/usr/include/c++/13/typeinfo:
 
-/usr/include/c++/13/bit:
+/usr/include/c++/13/bits/cxxabi_init_exception.h:
 
-/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
-/usr/include/c++/13/type_traits:
+/usr/include/c++/13/fstream:
 
-/usr/include/c++/13/bits/enable_special_members.h:
+/usr/include/c++/13/cstdio:
 
-/home/ayush/cpp-redis-lite/src/main.cpp:
+/usr/include/c++/13/bits/charconv.h:
+
+/usr/include/c++/13/bits/stl_pair.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
+
+/usr/include/locale.h:
+
+/usr/include/c++/13/ext/aligned_buffer.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:
 
@@ -580,16 +618,6 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
 
 /usr/include/c++/13/bits/concept_check.h:
 
-/usr/include/linux/posix_types.h:
-
-/usr/include/c++/13/bits/localefwd.h:
-
-/usr/include/c++/13/bits/exception_defines.h:
-
-/usr/include/x86_64-linux-gnu/bits/socket_type.h:
-
-/usr/include/c++/13/bits/locale_facets.h:
-
 /usr/include/c++/13/bits/chrono.h:
 
 /usr/include/c++/13/bits/cxxabi_forced.h:
@@ -599,6 +627,12 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 
 /usr/include/c++/13/cstddef:
+
+/usr/include/c++/13/bits/locale_facets.tcc:
+
+/usr/include/c++/13/bits/requires_hosted.h:
+
+/usr/include/c++/13/bits/string_view.tcc:
 
 /usr/include/c++/13/bits/std_thread.h:
 
@@ -621,6 +655,12 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
 /usr/include/c++/13/bits/stl_iterator_base_funcs.h:
 
 /usr/include/c++/13/bits/stl_iterator_base_types.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-least.h:
+
+/usr/include/c++/13/cerrno:
 
 /usr/include/c++/13/bits/stl_uninitialized.h:
 
@@ -670,39 +710,17 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
 
 /usr/include/c++/13/cstdint:
 
-/usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
+/usr/include/c++/13/bits/list.tcc:
 
-/usr/include/x86_64-linux-gnu/bits/stdint-least.h:
-
-/usr/include/c++/13/cerrno:
+/usr/include/c++/13/bits/allocated_ptr.h:
 
 /usr/include/c++/13/clocale:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
-
-/usr/include/c++/13/fstream:
-
-/usr/include/c++/13/bits/stl_pair.h:
-
-/usr/include/c++/13/bits/charconv.h:
-
-/usr/include/c++/13/cstdio:
-
 /usr/include/c++/13/ctime:
 
+/usr/include/c++/13/bits/stl_list.h:
+
 /usr/include/c++/13/debug/assertions.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
-
-/usr/include/c++/13/tuple:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
-
-/usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
-
-/usr/include/locale.h:
-
-/usr/include/c++/13/ext/aligned_buffer.h:
 
 /usr/include/asm-generic/bitsperlong.h:
 
@@ -726,13 +744,17 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
 
 /usr/include/c++/13/limits:
 
+/usr/include/x86_64-linux-gnu/bits/time.h:
+
+/usr/include/c++/13/list:
+
 /usr/include/c++/13/bits/unique_lock.h:
 
 /usr/include/c++/13/mutex:
 
-/usr/include/c++/13/bits/sstream.tcc:
-
 /usr/include/c++/13/cwctype:
+
+/usr/include/c++/13/bits/sstream.tcc:
 
 /usr/include/c++/13/ratio:
 
@@ -751,13 +773,3 @@ CMakeFiles/server.dir/src/main.cpp.o: /home/ayush/cpp-redis-lite/src/main.cpp \
 /usr/include/c++/13/bits/range_access.h:
 
 /usr/include/c++/13/system_error:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
-
-/usr/include/c++/13/bits/cxxabi_init_exception.h:
-
-/usr/include/c++/13/typeinfo:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h:
-
-/usr/include/c++/13/unordered_map:
